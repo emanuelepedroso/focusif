@@ -22,12 +22,17 @@
             </div>
 
             <div class="form-floating mt-3 mb-3">
-                <input type="date" name="dataNascimentoUsuario" id="dataNascimentoUsuario" placeholder="Data de Nascimento" class="form-control">
-                <label for="dataNascimentoUsuario">Data de Nascimento</label>
+                <select name="cursoUsuario" id="cursoUsuario" placeholder="curso" class="form-control">
+                    <option value="Técnico em Informática para Internet" selected>Técnico em Informática para Internet</option>
+                    <option value="Técnico em Automação Industrial">Técnico em Automação Industrial</option>
+                    <option value="Técnico em Mecânica">Técnico em Mecânica</option>
+                    <option value="Técnico em Programação de Jogos Digitais">Técnico em Programação de Jogos Digitais</option>
+                    <option value="Técnico em Eletromecânica">Técnico em Eletromecânica</option>
+                </select>
+                <label for="cursoUsuario">Curso</label>
                 <div class="valid-feedback"></div>
                 <div class="invalid-feedback"></div>
             </div>
-
 
 
             <div class="form-floating mt-3 mb-3">

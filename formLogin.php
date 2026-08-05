@@ -41,7 +41,7 @@
     </div>
 
     <div class="d-flex justify-content-center mb-3">
-        <p>Ainda não é cadastrado? <a href="formLogin.php" title="Cadastrar-se">Clique aqui!</a>&nbsp<i class="bi bi-emoji-smile"></i></p>
+        <p>Ainda não é cadastrado? <a href="formUsuario.php" title="Cadastrar-se">Clique aqui!</a>&nbsp<i class="bi bi-emoji-smile"></i></p>
     </div>
 
 <?php include "footer.php" ?>

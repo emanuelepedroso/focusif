@@ -4,7 +4,7 @@
         //Verifica se o método de envio das informações do form é "POST"
         if($_SERVER["REQUEST_METHOD"] == "POST"){
             //Cria variáveis para armazenar as informações recebidas do array $_POST
-            $fotoUsuario = $nomeUsuario = $dataNascimentoUsuario = $cidadeUsuario = $emailUsuario = $senhaUsuario = $confirmarSenhaUsuario = "";
+            $fotoUsuario = $nomeUsuario = $cursoUsuario = $emailUsuario = $senhaUsuario = $confirmarSenhaUsuario = "";
 
             //Variável booleana para controle de erros de preenchimento
             $erroPreenchimento = false;
@@ -26,38 +26,15 @@
                 }
             }
 
-            //Validação do campo dataNascimentoUsuario
+            //Validação do campo cursoUsuario
             //Utiliza a função empty() para verificar se o campo está vazio
-            if(empty($_POST["dataNascimentoUsuario"])){
-                echo "<div class='alert alert-warning text-center'>O campo <strong>DATA DE NASCIMENTO</strong> é obrigatório!</div>";
+            if(empty($_POST["cursoUsuario"])){
+                echo "<div class='alert alert-warning text-center'>O campo <strong>curso</strong> é obrigatório!</div>";
                 $erroPreenchimento = true;
             }
             else{
-                //Se o $_POST["dataNascimentoUsuario"] não estiver vazio, é filtrado e armazenado na variável PHP
-                $dataNascimentoUsuario = filtrar_entrada($_POST["dataNascimentoUsuario"]);
-
-                //Utiliza a função strlen() para verificar o comprimento da string $dataNascimentoUsuario (string length)
-                if(strlen($dataNascimentoUsuario) == 10){
-                    //Aplicar a função substr() para gerar substrings e armazenar dia, mês e ano de nascimento
-                    $diaNascimentoUsuario = substr($dataNascimentoUsuario, 8, 2);
-                    $mesNascimentoUsuario = substr($dataNascimentoUsuario, 5, 2);
-                    $anoNascimentoUsuario = substr($dataNascimentoUsuario, 0, 4);
-                }
-                else{
-                    echo "<div class='alert alert-warning text-center'><strong>DATA</strong> inválida!</div>";
-                    $erroPreenchimento = true;
-                }
-            }
-
-            //Validação do campo cidadeUsuario
-            //Utiliza a função empty() para verificar se o campo está vazio
-            if(empty($_POST["cidadeUsuario"])){
-                echo "<div class='alert alert-warning text-center'>O campo <strong>CIDADE</strong> é obrigatório!</div>";
-                $erroPreenchimento = true;
-            }
-            else{
-                //Se o $_POST["cidadeUsuario"] não estiver vazio, é filtrado e armazenado na variável PHP
-                $cidadeUsuario = filtrar_entrada($_POST["cidadeUsuario"]);
+                //Se o $_POST["cursoUsuario"] não estiver vazio, é filtrado e armazenado na variável PHP
+                $cursoUsuario = filtrar_entrada($_POST["cursoUsuario"]);
             }
 
             //Validação do campo emailUsuario
@@ -137,7 +114,7 @@
             if(!$erroPreenchimento && !$erroUpload){
 
                 //Cria uma variável para armazenar a QUERY que realiza a inserção de dados na tabela Usuarios
-                $inserirUsuario = "INSERT INTO Usuarios (fotoUsuario, nomeUsuario, dataNascimentoUsuario, cidadeUsuario, emailUsuario, senhaUsuario, nivelUsuario) VALUES ('$fotoUsuario', '$nomeUsuario', '$dataNascimentoUsuario', '$cidadeUsuario', '$emailUsuario', '$senhaUsuario', 'usuario')";
+                $inserirUsuario = "INSERT INTO Usuarios (fotoUsuario, nomeUsuario, cursoUsuario, emailUsuario, senhaUsuario) VALUES ('$fotoUsuario', '$nomeUsuario', '$cursoUsuario', '$emailUsuario', '$senhaUsuario')";
 
                 //Inclui o arquivo de conexão com o Banco de Dados
                 include "conexaoBD.php";
@@ -158,12 +135,8 @@
                                     <td>$nomeUsuario</td>
                                 </tr>
                                 <tr>
-                                    <th>DATA DE NASCIMENTO</th>
-                                    <td>$diaNascimentoUsuario/$mesNascimentoUsuario/$anoNascimentoUsuario</td>
-                                </tr>
-                                <tr>
-                                    <th>CIDADE</th>
-                                    <td>$cidadeUsuario</td>
+                                    <th>CURSO</th>
+                                    <td>$cursoUsuario</td>
                                 </tr>
                                 <tr>
                                     <th>EMAIL</th>
